@@ -5,44 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>S.MIR.S CO LIMITED COMPANY</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff0f0;
-      color: #111;
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #fff0f0; color: #111; }
+    header { background-color: #b30000; color: white; text-align: center; padding: 20px 10px; position: relative; }
+    header img { max-height: 80px; }
+    nav { margin-top: 10px; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; }
+    .lang-switch {
+      position: absolute;
+      top: 10px; right: 10px;
     }
-    header {
-      background-color: #b30000;
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-    }
-    header img {
-      max-height: 80px;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
+    .lang-switch button {
+      background: white; color: #b30000;
+      border: none; padding: 5px 10px;
+      margin-left: 5px; border-radius: 5px;
+      cursor: pointer;
       font-weight: bold;
     }
-    nav a:hover {
-      text-decoration: underline;
+    .content { padding: 20px; max-width: 900px; margin: auto; }
+    footer { background: #111; color: white; text-align: center; padding: 20px; font-size: 14px; }
+
+    @media (max-width: 600px) {
+      nav a { display: block; margin: 10px 0; }
+      header img { max-height: 60px; }
     }
-    .content {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    .content h2 {
-      color: #b30000;
-    }
-    footer {
-      background-color: #111;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://i.postimg.cc/SKRGGp17/photo-2025-07-03-22-38-50.jpg" alt="Логотип" />
+  <h1>S.MIR.S CO LIMITED COMPANY</h1>
+  <div class="lang-switch">
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('ua')">UA</button>
+  </div>
+  <nav>
+    <a href="catalog.html">Каталог</a>
+    <a href="contacts.html">Контакты</a>
+  </nav>
+</header>
+
+<div class="content">
+  <div id="lang-ru">
+    <h2>О компании</h2>
+    <p><strong>S.MIR.S CO LIMITED COMPANY</strong> — украинский производитель профессиональной косметики для ногтей: гель-лаки, база, топы, материалы для наращивания и ухода. Мы создаём продукцию с любовью к мастерам и заботой о клиентах.</p>
+    <p>Собственное производство, строгий контроль качества, трендовые оттенки и комфорт в работе — всё это мы вкладываем в каждый продукт.</p>
+  </div>
+  <div id="lang-ua" style="display: none;">
+    <h2>Про компанію</h2>
+    <p><strong>S.MIR.S CO LIMITED COMPANY</strong> — український виробник професійної косметики для нігтів: гель-лаки, бази, топи, матеріали для нарощування та догляду. Ми створюємо продукцію з любов'ю до майстрів і турботою про клієнтів.</p>
+    <p>Власне виробництво, суворий контроль якості, трендові відтінки та комфорт у роботі — усе це ми вкладаємо в кожен продукт.</p>
+  </div>
+</div>
+
+<footer>
+  © 2025 S.MIR.S CO LIMITED COMPANY
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.getElementById('lang-ru').style.display = lang === 'ru' ? 'block' : 'none';
+    document.getElementById('lang-ua').style.display = lang === 'ua' ? 'block' : 'none';
+  }
+</script>
+
+</body>
+</html>
