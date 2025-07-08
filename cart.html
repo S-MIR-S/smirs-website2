@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Корзина — S.MIR.S</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #fff0f0; }
+    header { background: #b30000; color: white; text-align: center; padding: 20px; position: relative; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; }
+    .content { max-width: 800px; margin: auto; padding: 20px; background: white; border-radius: 10px; margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+    .total { font-weight: bold; text-align: right; }
+    form input, form textarea {
+      width: 100%; padding: 10px; margin: 10px 0; border-radius: 6px; border: 1px solid #ccc;
+    }
+    form button {
+      background: #b30000; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Корзина</h1>
+  <nav>
+    <a href="index.html">О компании</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="contacts.html">Контакты</a>
+  </nav>
+</header>
+<div class="content">
+  <h2>Ваши товары</h2>
+  <table id="cart-table">
+    <thead>
+      <tr><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Сумма</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <p class="total">Итого: <span id="total">0</span> грн</p>
+
+  <h2>Оформление заказа</h2>
+  <form onsubmit="event.preventDefault(); alert('Спасибо за заказ! Мы свяжемся с вами.'); localStorage.clear(); location.href='index.html';">
+    <input type="text" placeholder="Ваше имя" required />
+    <input type="tel" placeholder="Телефон" required />
+    <textarea placeholder="Комментарий или адрес доставки"></textarea>
+    <button type="submit">Отправить заказ</button>
+  </form>
+</div>
+<script>
+  function loadCart() {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const tbody = document.querySelector("#cart-table tbody");
+    const total = document.getElementById("total");
+    let sum = 0;
+    tbody.innerHTML = "";
+    cart.forEach(item => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${item.name}</td><td>${item.price} грн</td><td>${item.qty}</td><td>${item.price * item.qty} грн</td>`;
+      tbody.appendChild(tr);
+      sum += item.price * item.qty;
+    });
+    total.textContent = sum;
+  }
+  loadCart();
+</script>
+</body>
+</html>
