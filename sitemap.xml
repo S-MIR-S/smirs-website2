@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://s-mir-s.github.io/smirs-website2/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://s-mir-s.github.io/smirs-website2/catalog.html</loc>
+  </url>
+  <url>
+    <loc>https://s-mir-s.github.io/smirs-website2/contacts.html</loc>
+  </url>
+  <url>
+    <loc>https://s-mir-s.github.io/smirs-website2/cart.html</loc>
+  </url>
+</urlset>

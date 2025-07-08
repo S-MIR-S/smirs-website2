@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://s-mir-s.github.io/smirs-website2/sitemap.xml
