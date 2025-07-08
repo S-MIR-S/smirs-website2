@@ -127,4 +127,42 @@
   <div class="item">
     <img src="https://i.postimg.cc/x8zvtsYM/base.jpg" alt="База">
     <h3 data-ru="База под гель" data-ua="База під гель">База под гель</h3>
-    <button onclick
+    <button onclick="openForm(this)" data-ru="Купить" data-ua="Купити">Купить</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeForm()"></div>
+
+<div class="form-popup" id="form">
+  <h3>Заказ товара</h3>
+  <form onsubmit="event.preventDefault(); alert('Спасибо за заказ!'); closeForm();">
+    <input type="text" id="product" readonly />
+    <input type="text" placeholder="Ваше имя" required />
+    <input type="tel" placeholder="Телефон" required />
+    <button type="submit">Отправить заказ</button>
+  </form>
+</div>
+
+<script>
+  function openForm(button) {
+    const productName = button.previousElementSibling.textContent;
+    document.getElementById('product').value = productName;
+    document.getElementById('form').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+
+  function closeForm() {
+    document.getElementById('form').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
+
+  function setLang(lang) {
+    document.querySelectorAll('[data-ru]').forEach(el => {
+      el.textContent = el.dataset[lang];
+    });
+    document.getElementById('title').textContent = lang === 'ru' ? 'Каталог продукции' : 'Каталог продукції';
+  }
+</script>
+
+</body>
+</html>
