@@ -1,78 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
-  <meta name="description" content="S.MIR.S — производитель профессиональной косметики для ногтей. Гель-лак, база, топ, полигель и уходовые средства. Доставка по Украине." />
-  <meta name="keywords" content="гель лак, база, топ, наращивание, ногти, полигель, нейл, SMIRS, S.MIR.S, маникюр, Украина" />
-  <meta property="og:title" content="S.MIR.S — Косметика для ногтей" />
-  <meta property="og:description" content="Гель-лаки, базы, топы, полигели и многое другое от украинского производителя." />
-  <meta property="og:image" content="https://i.postimg.cc/SKRGGp17/photo-2025-07-03-22-38-50.jpg" />
-  <link rel="icon" href="https://i.postimg.cc/SKRGGp17/photo-2025-07-03-22-38-50.jpg" />
-
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Корзина — S.MIR.S</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Корзина - S.MIR.S</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #fff0f0; }
-    header { background: #b30000; color: white; text-align: center; padding: 20px; position: relative; }
-    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; }
-    .content { max-width: 800px; margin: auto; padding: 20px; background: white; border-radius: 10px; margin-top: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
-    .total { font-weight: bold; text-align: right; }
-    form input, form textarea {
-      width: 100%; padding: 10px; margin: 10px 0; border-radius: 6px; border: 1px solid #ccc;
-    }
-    form button {
-      background: #b30000; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;
-    }
+    body { font-family: sans-serif; padding: 20px; background: #fff5f5; }
+    header, footer { background: #8B0000; color: white; padding: 10px; text-align: center; }
+    ul { padding: 0; list-style: none; }
+    li { padding: 10px; border-bottom: 1px solid #ccc; }
+    button { background: black; color: white; padding: 10px; border: none; cursor: pointer; }
   </style>
+  <script>
+    function loadCart() {
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      let list = document.getElementById('cart-items');
+      list.innerHTML = '';
+      if (cart.length === 0) {{
+        list.innerHTML = '<li>Корзина пуста</li>';
+        return;
+      }}
+      cart.forEach(item => {{
+        let li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      }});
+    }
+    window.onload = loadCart;
+  </script>
 </head>
 <body>
-<header>
-  <img src="lion-logo.jpg" alt="S.MIR.S Logo" style="height:60px; vertical-align: middle;" />
-  <img src="logo.jpg" alt="S.MIR.S Logo" style="height:60px; vertical-align: middle;" />
-  <h1>Корзина</h1>
-  <nav>
-    <a href="index.html">О компании</a>
-    <a href="catalog.html">Каталог</a>
-    <a href="contacts.html">Контакты</a>
-  </nav>
-</header>
-<div class="content">
-  <h2>Ваши товары</h2>
-  <table id="cart-table">
-    <thead>
-      <tr><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Сумма</th></tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-  <p class="total">Итого: <span id="total">0</span> грн</p>
-
-  <h2>Оформление заказа</h2>
-  <form onsubmit="event.preventDefault(); alert('Спасибо за заказ! Мы свяжемся с вами.'); localStorage.clear(); location.href='index.html';">
-    <input type="text" placeholder="Ваше имя" required />
-    <input type="tel" placeholder="Телефон" required />
-    <textarea placeholder="Комментарий или адрес доставки"></textarea>
-    <button type="submit">Отправить заказ</button>
-  </form>
-</div>
-<script>
-  function loadCart() {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const tbody = document.querySelector("#cart-table tbody");
-    const total = document.getElementById("total");
-    let sum = 0;
-    tbody.innerHTML = "";
-    cart.forEach(item => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `<td>${item.name}</td><td>${item.price} грн</td><td>${item.qty}</td><td>${item.price * item.qty} грн</td>`;
-      tbody.appendChild(tr);
-      sum += item.price * item.qty;
-    });
-    total.textContent = sum;
-  }
-  loadCart();
-</script>
+  <header><h1>Корзина</h1></header>
+  <main>
+    <ul id="cart-items"></ul>
+    <p><em>Для оформления заказа свяжитесь с нами в Telegram или по телефону.</em></p>
+  </main>
+  <footer>© 2025 S.MIR.S</footer>
 </body>
 </html>
